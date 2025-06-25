@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AleksGeoToursReviewsApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c98207616ed640836332399331e1bc19793b9dd")]
 [assembly: System.Reflection.AssemblyProductAttribute("AleksGeoToursReviewsApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AleksGeoToursReviewsApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

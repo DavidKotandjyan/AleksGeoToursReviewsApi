@@ -35,5 +35,5 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapControllers();
-
+app.MapGet("/", () => "Backend API is running");
 app.Run();

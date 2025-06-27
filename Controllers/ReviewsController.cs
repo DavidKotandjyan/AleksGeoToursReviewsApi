@@ -36,21 +36,6 @@ namespace AleksGeoToursReviewsApi.Controllers
 
             return CreatedAtAction(nameof(Get), new { id = review.Id }, review);
         }
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteReview(int id)
-        {
-            var review = await _context.Reviews.FindAsync(id);
-            if (review == null)
-                return NotFound();
-
-            // Пример: сравниваем с авторизованным пользователем
-            if (review.Name != User.Identity.Name)
-                return Forbid(); // нельзя удалить чужой
-
-            _context.Reviews.Remove(review);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
+        
     }
 }

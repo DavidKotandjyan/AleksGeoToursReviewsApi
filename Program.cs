@@ -37,3 +37,6 @@ app.UseSwaggerUI();
 app.MapControllers();
 app.MapGet("/", () => "Backend API is running");
 app.Run();
+
+
+app.MapGet("/", () => "Backend API is running");

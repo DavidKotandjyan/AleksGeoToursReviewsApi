@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using AleksGeoToursReviewsApi.Data;
+using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,8 +28,10 @@ app.Urls.Add($"http://*:{port}");
 
 // 👉 Правильный порядок!
 app.UseCors("MyAllowAll");
-
-app.UseHttpsRedirection();
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedProto
+});
 app.UseAuthorization();
 
 app.UseSwagger();

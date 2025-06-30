@@ -1,5 +1,5 @@
-﻿using AleksGeoToursReviewsApi.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using AleksGeoToursReviewsApi.Models;
 
 namespace AleksGeoToursReviewsApi.Data
 {
@@ -9,5 +9,4 @@ namespace AleksGeoToursReviewsApi.Data
 
         public DbSet<Review> Reviews { get; set; }
     }
-
 }

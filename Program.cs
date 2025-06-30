@@ -1,42 +1,40 @@
-using Microsoft.EntityFrameworkCore;
+п»їusing Microsoft.EntityFrameworkCore;
 using AleksGeoToursReviewsApi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Добавляем подключение к базе
+// DB
 builder.Services.AddDbContext<ReviewsContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Добавляем контроллеры
+// Controllers
 builder.Services.AddControllers();
 
-// Включаем Swagger
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// CORS (если frontend работает отдельно)
+// CORS
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(policy =>
+    options.AddPolicy("MyAllowAll", policy =>
         policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 });
 
 var app = builder.Build();
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5055";
+app.Urls.Add($"http://*:{port}");
 
-// Middleware
-app.UseCors();
+// рџ‘‰ РџСЂР°РІРёР»СЊРЅС‹Р№ РїРѕСЂСЏРґРѕРє!
+app.UseCors("MyAllowAll");
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
-// Swagger UI
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapControllers();
 app.MapGet("/", () => "Backend API is running");
+
 app.Run();
-
-
-app.MapGet("/", () => "Backend API is running");
